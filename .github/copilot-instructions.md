@@ -1,33 +1,11 @@
-# Portfolio Bridge Copilot Instructions
+# AI Copilot Instructions
 
-Portfolio Bridge is a privacy-first portfolio management web app (React SPA & Tauri Desktop).
+이 프로젝트는 AI 에이전트 하네스 템플릿 구조를 따르고 있습니다.
+이 프로젝트의 아키텍처와 코딩 규칙을 이해하기 위해, 코드를 생성하거나 수정하기 전에 **반드시** 다음 파일들을 읽으십시오:
 
-## 🚀 Core Rules & Conventions
+1. `AGENTS.md` (프로젝트의 마스터 라우팅 파일 및 워크플로우 가이드)
+2. `.agents/rules/project-context.md` (기술 스택, 프로젝트 구조, 빌드/테스트 명령어)
 
-You MUST follow these rules when generating or editing code:
-
-1. **Tech Stack:**
-   - React 19, TypeScript, Vite 7, Tailwind CSS v4, Zustand 5, React Router v7.
-
-2. **React Components:**
-   - Functional components only. No class components.
-   - Use Tailwind CSS v4 exclusively. **Never use inline `style={{}}`**.
-   - Path alias: Use `@/` for all `src/` imports. Never use `../` more than one level deep.
-
-3. **State Management (Zustand):**
-   - All global state must use Zustand in `src/stores/use<Domain>Store.ts`.
-   - Must use `persist` middleware to `localStorage`.
-   - Always use `STORAGE_KEYS` from `src/constants/storage.ts` for the `name` field.
-
-4. **Data Fetching (Yahoo Finance):**
-   - **Never call `fetch()` directly** against Yahoo Finance URLs.
-   - Always use `yahooFetch()` from `src/utils/yahoo/yahooCore.ts`.
-
-5. **Internationalisation (i18n):**
-   - Never hardcode user-visible strings.
-   - Always use `const t = useT()` from `@/hooks/useT`.
-   - Update all 4 locale files (`ko.ts`, `en.ts`, `ja.ts`, `de.ts`) and `types.ts` when adding strings.
-   - AI-facing prompt text must be in English.
-
-6. **Agent Workflows:**
-   - For detailed workflows, read the corresponding agent files in the workspace (e.g., `.agents/rules/agent-component-creator.md`).
+**핵심 규칙:**
+- 임의의 프레임워크나 언어를 가정하지 마십시오. 오직 `.agents/rules/project-context.md`에 명시된 기술 스택과 컨벤션을 철저히 따르십시오.
+- 복잡한 작업이나 기획이 필요한 경우 `AGENTS.md`에 명시된 워크플로우(예: `/plan`, `/frontend`, `/backend`)를 참고하여 단계적으로 접근하십시오.

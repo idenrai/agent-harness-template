@@ -5,7 +5,7 @@
 
 ## 📌 Core Rules (항상 준수)
 코딩 전반에 적용되는 필수 규칙입니다. 코드 작성 전 반드시 다음 파일들을 확인하세요.
-- 프로젝트 전체 아키텍처 및 스택: `.agents/rules/project-context.md` 읽기
+- 프로젝트 전체 아키텍처 및 스택: `.agents/rules/project-context.md` 읽기 (주의: 만약 해당 문서가 아직 초기 템플릿 상태(Placeholder)라면, 어떠한 코드도 작성하지 말고 사용자에게 `/plan` 워크플로우를 먼저 실행하여 기술 스택을 확정할 것을 강제하세요.)
 - 프로젝트 보안 및 데이터 취급 원칙: `.agents/rules/security.md` 읽기
 - GitHub 커밋 규칙: `.agents/rules/git-commit-rules.md` 읽기
 - **오픈소스 스킬 탐색 (필수):** 새로운 지시를 받으면, 코딩이나 계획 수립에 앞서 `npx skills find [키워드]` 명령어로 필요한 도구나 가이드라인(Skill)이 있는지 검색하세요. 적합한 스킬이 발견되면 `npx skills add <package> -y`를 통해 프로젝트에 설치 및 적용한 후 작업을 진행하세요.
@@ -13,7 +13,7 @@
 ## 🔄 Workflows (상황별 참조 트리거)
 특정 작업이나 상황이 발생했을 때, 해당하는 워크플로우나 에이전트 지침을 로드하세요.
 
-- **프론트엔드 컴포넌트 신규 생성, 수정 및 리팩토링 시 (/frontend):** `.agents/workflows/frontend.md` 읽기
+- **프론트엔드 UI/UX 컴포넌트 신규 생성, 수정 및 리팩토링 시 (/frontend):** `.agents/workflows/frontend.md` 읽기
 - **백엔드 아키텍처 설계, API 개발 및 리팩토링 시 (/backend):** `.agents/workflows/backend.md` 읽기
 - **빌드 검토 및 오류 해결 시:** `.agents/workflows/build-guard.md` 및 `.agents/workflows/build-check.md` 읽기
 - **단위 테스트 작성 및 검증 시:** `.agents/workflows/test-writer.md` 읽기
@@ -27,7 +27,7 @@
 - **GitHub 이슈 기반 버그 수정 및 자동 PR 시 (/solve-issue):** `.agents/workflows/solve-issue.md` 읽기
 - **작업 완료 후 PR 자동 생성 시 (/pr):** `.agents/workflows/pr.md` 읽기
 - **현재 세션을 요약하고 파기할 시 (/discard):** `.agents/workflows/discard.md` 읽기
-- **ESLint 오류를 자동 수정할 시 (/lint-fix):** `.agents/workflows/lint-fix.md` 읽기
+- **Lint 오류를 자동 수정할 시 (/lint-fix):** `.agents/workflows/lint-fix.md` 읽기
 - **원격에서 삭제된 로컬 브랜치 일괄 정리 시 (/prune):** `.agents/workflows/prune.md` 읽기
 
 ## 🛠 Skills (도구 및 스킬)
