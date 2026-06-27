@@ -2,6 +2,11 @@
 trigger: always_on
 ---
 
+> [!WARNING]
+> **AI Agent Notice:** 
+> 만약 이 파일에 `[e.g. React 19]`와 같은 플레이스홀더 텍스트가 남아있다면, 아직 프로젝트 스택이 초기화되지 않은 상태입니다. 
+> 이 상태에서는 어떠한 코드 변경도 시도하지 말고, 즉시 사용자에게 "먼저 `/plan` 명령을 통해 프로젝트 기획 및 스택 설정을 완료해 주세요"라고 요청하십시오.
+
 # Instructions for [Project Name]
 
 ## Project Overview
@@ -14,12 +19,24 @@ trigger: always_on
 
 | Area | Technology |
 |------|------------|
-| Frontend | [e.g. React 19 · TypeScript · Vite] |
-| Styling | [e.g. Tailwind CSS] |
-| State | [e.g. Zustand] |
-| Backend | [e.g. Node.js · Express] |
-| Database | [e.g. PostgreSQL · Prisma] |
-| Deployment | [e.g. Vercel / AWS] |
+| Frontend | [e.g. React 19 / Vue 3 / Svelte] |
+| Styling | [e.g. Tailwind CSS / Vanilla CSS / styled-components] |
+| State | [e.g. Zustand / Redux / Pinia] |
+| Backend | [e.g. Node.js / Python FastAPI / Go / Java Spring] |
+| Database | [e.g. PostgreSQL / MongoDB / MySQL] |
+| Deployment | [e.g. Vercel / AWS / GCP] |
+
+---
+
+## Command Reference
+
+[이 프로젝트에서 사용되는 주요 터미널 명령어를 명시하세요. 에이전트가 워크플로우 실행 시 참고합니다.]
+
+- **Install Dependencies:** `[e.g. npm install / yarn / pip install -r requirements.txt]`
+- **Development Server:** `[e.g. npm run dev / python main.py]`
+- **Build for Production:** `[e.g. npm run build / go build]`
+- **Linting:** `[e.g. npm run lint / eslint . --fix / flake8]`
+- **Testing:** `[e.g. npm test / pytest / go test]`
 
 ---
 
@@ -28,57 +45,24 @@ trigger: always_on
 ```
 [프로젝트 이름]/
 ├── src/                        # 소스 코드 디렉토리
-│   ├── components/             # 재사용 가능한 UI 컴포넌트
-│   ├── hooks/                  # 커스텀 훅
-│   ├── pages/                  # 라우트 페이지
-│   ├── stores/                 # 전역 상태 관리
-│   ├── types/                  # 타입 정의
-│   └── utils/                  # 유틸리티 함수
-├── public/                     # 정적 에셋
-├── package.json
-└── [기타 설정 파일들]
+│   ├── [프론트엔드 폴더]
+│   └── [백엔드 폴더]
+├── [기타 설정 파일들]
+└── README.md
 ```
-
----
-
-## How to Build and Run
-
-### Prerequisites
-
-- Node.js [버전] 이상
-
-### Development
-
-```bash
-# 의존성 설치
-npm install
-
-# 개발 서버 실행
-npm run dev
-```
-
----
-
-## Testing
-
-[테스트 실행 방법 및 규칙을 명시하세요. 예: `npm test`]
 
 ---
 
 ## Coding Conventions
 
 ### Language and Types
-- 모든 소스 파일은 **TypeScript**를 사용합니다.
-- `interface`와 `type`을 일관성 있게 사용하세요.
+- [e.g. 모든 소스 파일은 TypeScript를 사용합니다 / Python 타입 힌트를 적극 사용합니다.]
+- [e.g. 인터페이스와 타입을 일관성 있게 사용하세요.]
 
-### Components
-- 함수형 컴포넌트와 훅을 사용합니다.
-- 컴포넌트 이름은 PascalCase를 사용합니다.
+### Naming Conventions
+- [e.g. 컴포넌트: PascalCase]
+- [e.g. 파일 및 유틸리티: camelCase / snake_case]
+- [e.g. 상수: UPPER_SNAKE_CASE]
 
-### File and Naming Conventions
-- 유틸리티 및 훅: `camelCase.ts`
-- 컴포넌트: `PascalCase.tsx`
-- 상수: `UPPER_SNAKE_CASE`
-
-### Linting
-- 작업 커밋 전에 린트를 실행하고 오류를 수정하세요.
+### General Guidelines
+- [프로젝트 전반에 걸쳐 적용할 아키텍처 원칙, 폴더 구조 원칙, 상태 관리 원칙 등을 자유롭게 기술하세요.]

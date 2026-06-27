@@ -6,32 +6,31 @@ on:
   pull_request:
     branches: [main]
 
-# Least-privilege: read-only by default (no write permissions granted)
 permissions:
   contents: read
 
 jobs:
-  lint-and-build:
-    name: Lint & Build
+  build:
+    name: Build & Test
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout
-        # actions/checkout v4.2.2 — pinned to immutable SHA per supply-chain best practices
-        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        uses: actions/checkout@v4
 
-      - name: Setup Node.js
-        # actions/setup-node v4.4.0
-        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
-        with:
-          node-version: "20"
-          cache: "npm"
+      # --- 템플릿 사용 안내 ---
+      # 이 파일은 GitHub Actions의 기본 구조입니다.
+      # 프로젝트의 언어/프레임워크에 맞춰 아래 설정들을 채워주세요.
+      # 예: Setup Node.js / Python / Go 등
+
+      - name: Setup Environment
+        run: echo "환경 설정을 추가하세요 (예: actions/setup-node 등)"
 
       - name: Install dependencies
-        run: npm ci
+        run: echo "의존성 설치 명령어를 입력하세요 (예: npm ci, pip install -r requirements.txt)"
 
-      - name: Lint
-        run: npm run lint
+      - name: Run Tests
+        run: echo "테스트 실행 명령어를 입력하세요 (예: npm test, pytest)"
 
-      - name: Type-check & Build
-        run: npm run build
+      - name: Run Linter
+        run: echo "린트 검사 명령어를 입력하세요 (예: npm run lint, flake8)"

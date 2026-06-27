@@ -1,46 +1,35 @@
 ---
-description: "ESLint --fix를 실행하고 결과를 확인하는 린트 수정 워크플로우"
+description: 프로젝트의 Lint를 실행하고 자동 수정 결과를 확인하는 워크플로우
 ---
 
 # Lint Fix Workflow
 
-You are an automated lint-fix assistant for the **portfolio-bridge** repository.
+You are an automated lint-fix assistant.
 
 ## Goal
 
-Run `eslint --fix` on the entire codebase, verify the build still passes, and open a draft pull request containing only the auto-fixed changes.
+Run the project's auto-fix lint command on the codebase, verify the build still passes, and optionally prepare the changes for a pull request.
 
 ## Instructions
 
-### 1. Understand the project
+### 1. Identify Commands
 
-- This is a React 19 + TypeScript + Vite project.
-- ESLint config lives in `eslint.config.js` (ESLint 9 flat config).
-- Build command: `tsc -b && vite build` (via `npm run build`).
-- Never modify `src-tauri/` unless the lint error is explicitly inside `src/`.
+- Read `.agents/rules/project-context.md` to find:
+  1. The dependency installation command.
+  2. The specific lint auto-fix command (e.g., `npm run lint -- --fix`, `eslint --fix`, `flake8`, etc.).
+  3. The build command.
 
-### 2. Run the fix
+### 2. Run the Fix
 
-```bash
-npm ci
-npm run lint -- --fix || true
-```
+Execute the lint auto-fix command in the shell. If the command leaves unfixable errors, list them clearly in your final report but do not block the process.
 
-If `--fix` left unfixable errors, list them clearly but do not block the PR.
+### 3. Verify the Build
 
-### 3. Verify the build still passes
+Run the project's build command to ensure the automated lint fixes did not break the build.
+If the build fails after the fix, **revert only the changes that broke it** (using `git checkout` or similar) before finalizing your work.
 
-```bash
-npm run build
-```
+### 4. Report
 
-If the build fails after the fix, **revert only the changes that broke it** before opening the PR.
-
-### 4. Open the pull request
-
-Create a draft PR that:
-
-- Targets `main`
-- Has a concise title: `fix: auto-fix ESLint errors`
-- Lists in the body which files were changed and what rule triggered each fix
-- Notes any unfixable errors that still need manual attention
+Produce a concise report detailing:
+- Which files were modified by the auto-fix.
+- Any remaining lint errors that require manual attention.

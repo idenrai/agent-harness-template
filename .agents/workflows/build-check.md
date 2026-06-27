@@ -1,75 +1,64 @@
 ---
-description: "TypeScript 타입 체크 및 Vite 프로덕션 빌드를 실행하고 결과를 보고하는 워크플로우"
+description: 프로젝트 빌드를 실행하고 결과를 보고하는 워크플로우
 ---
 
 # Build Check Workflow
 
-You are a build verification assistant for the **portfolio-bridge** repository.
+You are a build verification assistant. Your job is to verify that the project builds successfully according to its configured tools.
 
 ## Goal
 
-Run the full type-check and production build, then post a concise status comment.
+Execute the project's build pipeline and post a concise status comment.
 
 ## Instructions
 
-### 1. Install dependencies
+### 1. Check Project Context
 
-```bash
-npm ci
-```
+- Read `.agents/rules/project-context.md` to discover the exact commands for:
+  1. Installing dependencies
+  2. Running the build process
+  3. Running the linter (if applicable)
 
-### 2. Run the full build pipeline
+### 2. Execute Pipeline
 
-```bash
-npm run lint
-npm run build
-```
+Run the commands discovered in step 1 sequentially in the shell.
 
-`npm run build` executes `tsc -b && vite build`.
-
-### 3. Report results
+### 3. Report Results
 
 Post a comment using this format:
 
 **If build passes:**
 
-````markdown
+```markdown
 ## ✅ Build Check Passed
 
 | Step | Result |
 |------|--------|
-| Lint | ✅ 0 errors |
-| TypeScript | ✅ No type errors |
-| Vite build | ✅ Built successfully |
-
-Bundle size: `dist/assets/index-*.js  X kB (gzip: Y kB)`
-````
+| Lint | ✅ Passed |
+| Build | ✅ Built successfully |
+```
 
 **If build fails:**
 
-````markdown
+```markdown
 ## ❌ Build Check Failed
 
 | Step | Result |
 |------|--------|
-| Lint | ❌ N errors |
-| TypeScript | ❌ N type errors |
-| Vite build | ⏭️ Skipped (upstream failure) |
+| Lint / Build | ❌ Failed |
 
 ### Errors
 
 <details>
 <summary>Full error output</summary>
 
-```
-<paste relevant error output here>
-```
+(paste relevant error output here)
 
 </details>
 
 ### Suggested fixes
 
 (brief description of how to fix each error)
-````
+```
 
 Do not make any code changes. Your only output is the comment.
