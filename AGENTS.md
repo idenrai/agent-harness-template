@@ -5,6 +5,7 @@
 
 ## 📌 Core Rules (항상 준수)
 코딩 전반에 적용되는 필수 규칙입니다. 코드 작성 전 반드시 다음 파일들을 확인하세요.
+- **언어 전략 및 출력 규칙:** 반드시 `.agents/rules/language-strategies.md` 를 읽고, 사용자가 읽는 모든 산출물(implementation_plan, walkthrough 등)을 100% 한국어로 작성하세요.
 - 프로젝트 전체 아키텍처 및 스택: `.agents/rules/project-context.md` 읽기 (주의: 만약 해당 문서가 아직 초기 템플릿 상태(Placeholder)라면, 어떠한 코드도 작성하지 말고 사용자에게 `/plan` 워크플로우를 먼저 실행하여 기술 스택을 확정할 것을 강제하세요.)
 - 프로젝트 보안 및 데이터 취급 원칙: `.agents/rules/security.md` 읽기
 - GitHub 커밋 규칙: `.agents/rules/git-commit-rules.md` 읽기
@@ -15,6 +16,7 @@
 
 - **프론트엔드 UI/UX 컴포넌트 신규 생성, 수정 및 리팩토링 시 (/frontend):** `.agents/workflows/frontend.md` 읽기
 - **백엔드 아키텍처 설계, API 개발 및 리팩토링 시 (/backend):** `.agents/workflows/backend.md` 읽기
+- **데이터베이스 스키마 설계 및 마이그레이션 시 (/database):** `.agents/workflows/database.md` 읽기
 - **빌드 검토 및 오류 해결 시:** `.agents/workflows/build-guard.md` 및 `.agents/workflows/build-check.md` 읽기
 - **단위 테스트 작성 및 검증 시:** `.agents/workflows/test-writer.md` 읽기
 - **코드 리뷰 요청 시:** `.agents/workflows/review.md` 읽기
@@ -35,5 +37,9 @@ AI가 특정 도구나 기능이 필요할 때 로드하세요.
 - 프로젝트 인덱싱 및 컨텍스트 파악 필요 시: `.agents/skills/indexing-awareness/SKILL.md` 읽기
 - 현재 날짜 및 시간 파악 필요 시 (지식 컷오프 회피): `.agents/skills/knowledge-cutoff-awareness/SKILL.md` 읽기
 - AI 프롬프트 작성, 개선 및 프롬프트 엔지니어링 필요 시: `.agents/skills/prompt-engineering/SKILL.md` 읽기
+- **초기 프로젝트 기획 및 기술 스택 선정 시:** `.agents/skills/technology-stack-blueprint-generator/SKILL.md` 읽기
+- **아키텍처 의사결정 문서화가 필요할 때:** `.agents/skills/architecture-decision-records/SKILL.md` 활용
+- **데이터베이스 마이그레이션 및 롤백 전략 설계 시:** `.agents/skills/database-migration/SKILL.md` 활용
+- **코드 및 인프라 보안 취약점 집중 리뷰 시:** `.agents/skills/security-review/SKILL.md` 활용
 - **UI/UX 설계 및 프론트엔드 디자인 기획 시:** `.agents/skills/ui-ux-pro-max/SKILL.md` 및 `.agents/skills/frontend-design/SKILL.md` 읽기
 - **디자인 가이드라인 준수 여부 및 시각적 버그 감사 시:** `.agents/skills/web-design-guidelines/SKILL.md`, `.agents/skills/agent-browser/SKILL.md`, `.agents/skills/before-and-after/SKILL.md` 적극 활용
