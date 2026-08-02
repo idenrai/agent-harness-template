@@ -1,5 +1,6 @@
 ---
 description: 코드 리뷰 및 피드백
+model: gemini-pro
 ---
 
 # 리뷰 워크플로우

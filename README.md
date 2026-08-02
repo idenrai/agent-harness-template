@@ -30,6 +30,19 @@ By using this template when starting a new project, you can instantly set up a p
 5. **Route in AGENTS.md:** Ensure that any newly added rules, workflows, or skills are properly routed and referenced within `AGENTS.md`.
 6. **Vibe Coding:** Start your full-fledged AI vibe coding experience!
 
+### 💡 Recommended Workflow Loop
+
+To get the most out of this template, we recommend the following iterative cycle:
+
+1. **Plan & Design:** Use `/plan` to establish and document the task plan.
+2. **Implement:** Once approved, instruct the agent to implement the code changes.
+3. **Review:** Run `/review` to check the quality and security of the code.
+4. **Iterate:** Address any issues raised during the review. (Repeat steps 3-4 if needed)
+5. **Pull Request:** Once ready, use `/pr` to safely create an automated PR.
+6. **Merge:** Review and merge the PR on GitHub.
+7. **Prune:** Clean up your local stale branches by running `/prune`.
+
+
 ## 📂 Structure Overview
 
 - `.agents/rules/`: Core Rules that the agent must always follow, such as coding conventions, architecture guidelines, and security policies.
@@ -70,6 +83,19 @@ By using this template when starting a new project, you can instantly set up a p
 4. **사용자 정의 규칙 및 워크플로우 추가:** 프로젝트 전용 규칙이나 워크플로우가 필요하다면 동일한 방식으로 `.agents/` 내에 추가하세요.
 5. **AGENTS.md 라우팅:** 새롭게 추가한 규칙, 워크플로우, 스킬이 에이전트에게 인식될 수 있도록 `AGENTS.md`에서 올바르게 라우팅하세요.
 6. **바이브 코딩 시작:** AI를 활용한 본격적인 바이브 코딩(Vibe Coding)을 전개하세요!
+
+### 💡 추천 이용 흐름 (Recommended Workflow Loop)
+
+이 템플릿을 가장 효과적으로 활용하기 위해 아래의 작업 사이클을 권장합니다:
+
+1. **기획 및 설계:** `/plan` 명령으로 작업 계획을 수립하고 문서화합니다.
+2. **구현:** 계획이 승인되면 에이전트에게 코드 구현을 지시합니다.
+3. **리뷰:** `/review` 명령을 통해 작성된 코드의 품질과 보안을 검토받습니다.
+4. **대응 (반복):** 리뷰에서 지적된 사항을 수정 및 보완합니다. (필요시 3~4 반복)
+5. **PR 생성:** 작업이 완료되면 `/pr` 명령으로 안전하게 자동 PR을 올립니다.
+6. **병합 (Merge):** GitHub 등 원격에서 PR을 병합(Merge) 처리합니다.
+7. **정리:** `/prune` 명령으로 로컬의 고립된 브랜치를 깨끗하게 정리합니다.
+
 
 ## 📂 구조 설명
 

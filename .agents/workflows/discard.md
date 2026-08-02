@@ -1,5 +1,6 @@
 ---
 description: 세션 파기 및 요약
+model: gemini-flash
 ---
 
 # 세션 파기 워크플로우

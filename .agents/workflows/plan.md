@@ -1,5 +1,6 @@
 ---
 description: 구현 전 계획 수립 및 심층 분석
+model: gemini-pro
 ---
 
 # 계획 및 심층 분석 워크플로우

@@ -1,5 +1,6 @@
 ---
 description: 원격에서 삭제된 로컬 브랜치 일괄 정리
+model: gemini-flash
 ---
 
 # Git Branch Prune Workflow
