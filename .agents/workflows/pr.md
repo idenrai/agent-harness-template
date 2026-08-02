@@ -1,5 +1,6 @@
 ---
 description: 작업 완료 후 PR 자동 생성
+model: gemini-pro
 ---
 
 # Pull Request Automation Workflow
@@ -40,7 +41,9 @@ Section body in English.
 - Code blocks and file/symbol names: always English only.
 
 ### 2. Verify Build
-- `run_command` 도구를 사용하여 `npm run build`를 실행합니다.
+- `git status` 또는 `git diff --name-only HEAD` 등을 사용하여 변경/추가된 파일 목록을 먼저 확인합니다.
+- 변경된 파일 중 소스 코드(예: `src/` 디렉토리 내 파일, `package.json` 등 빌드에 영향을 미치는 파일)가 포함된 경우에만 `run_command` 도구를 사용하여 빌드 스크립트(예: `npm run build`)를 실행합니다.
+- 마크다운 문서(`.md`), 에이전트 설정(`.agents/`) 등 빌드와 무관한 파일만 변경된 경우, 불필요한 빌드 검증을 생략하고 다음 단계로 넘어갑니다.
 - **에러가 발생할 경우:** 즉시 `.agents/workflows/build-guard.md`를 참고하여 에러의 원인을 파악하고 코드를 수정한 뒤 다시 확인하여 0 에러 상태를 만듭니다.
 
 ---

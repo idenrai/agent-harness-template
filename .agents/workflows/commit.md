@@ -1,5 +1,6 @@
 ---
 description: 커밋 메시지 생성 (영어)
+model: gemini-flash
 ---
 
 # Commit Message Generator (영어)
