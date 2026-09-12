@@ -16,6 +16,7 @@ description: 백엔드 아키텍처 설계, API 개발 및 리팩토링
 - 복잡해지는 비즈니스 로직은 단일 책임 원칙(SRP)에 따라 적절한 계층(예: Controller/Router, Service, Repository)으로 분리하여 관리합니다.
 - 데이터베이스 구조 설계 및 스키마 변경이 필요한 경우 반드시 `/database` 워크플로우를 참조하여 안전하게 처리하십시오.
 - **아키텍처 의사결정 기록:** 중대한 기술적 선택, 아키텍처 개편, 또는 라이브러리 변경이 발생할 경우 `.agents/skills/architecture-decision-records/SKILL.md` 스킬을 로드하여 `doc/adr/` 폴더에 구조적인 의사결정 기록(ADR)을 작성하십시오.
+- **AI 프롬프트 및 LLM 오케스트레이션 연동 시:** 백엔드 또는 API 라우트에서 LLM 호출, 프롬프트 동적 조립, 구조화된 출력(JSON Mode/Schema) 파싱을 구현하거나 수정할 때는 반드시 `.agents/workflows/prompt.md` 워크플로우를 참조합니다.
 
 ## 3. Security & Validation (Zero-Trust)
 - **모든 경계에서 검증:** 클라이언트로부터 들어오는 입력(Query params, Body, Headers)을 절대 신뢰하지 않습니다.

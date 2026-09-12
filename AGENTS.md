@@ -9,6 +9,7 @@
 - 프로젝트 전체 아키텍처 및 스택: `.agents/rules/project-context.md` 읽기 (주의: 만약 해당 문서가 아직 초기 템플릿 상태(Placeholder)라면, 어떠한 코드도 작성하지 말고 사용자에게 `/plan` 워크플로우를 먼저 실행하여 기술 스택을 확정할 것을 강제하세요.)
 - 프로젝트 보안 및 데이터 취급 원칙: `.agents/rules/security.md` 읽기
 - GitHub 커밋 규칙: `.agents/rules/git-commit-rules.md` 읽기
+- **테스트 및 검증 규약 (Fail Fast, Fail Cheap):** `.agents/rules/testing-pyramid-rules.md` 읽기
 - **오픈소스 스킬 탐색 (필수):** 새로운 지시를 받으면, 코딩이나 계획 수립에 앞서 `npx skills find [키워드]` 명령어로 필요한 도구나 가이드라인(Skill)이 있는지 검색하세요. 적합한 스킬이 발견되면 `npx skills add <package> -y`를 통해 프로젝트에 설치 및 적용한 후 작업을 진행하세요.
 
 ## 🔄 Workflows (상황별 참조 트리거)
@@ -17,6 +18,7 @@
 - **프론트엔드 UI/UX 컴포넌트 신규 생성, 수정 및 리팩토링 시 (/frontend):** `.agents/workflows/frontend.md` 읽기
 - **백엔드 아키텍처 설계, API 개발 및 리팩토링 시 (/backend):** `.agents/workflows/backend.md` 읽기
 - **데이터베이스 스키마 설계 및 마이그레이션 시 (/database):** `.agents/workflows/database.md` 읽기
+- **AI 프롬프트 작성, 템플릿 설계 및 최적화 시 (/prompt, /prompt-engineering):** `.agents/workflows/prompt.md` 읽기
 - **빌드 검토 및 오류 해결 시:** `.agents/workflows/build-guard.md` 및 `.agents/workflows/build-check.md` 읽기
 - **단위 테스트 작성 및 검증 시:** `.agents/workflows/test-writer.md` 읽기
 - **코드 리뷰 요청 시:** `.agents/workflows/review.md` 읽기
@@ -36,7 +38,7 @@
 AI가 특정 도구나 기능이 필요할 때 로드하세요.
 - 프로젝트 인덱싱 및 컨텍스트 파악 필요 시: `.agents/skills/indexing-awareness/SKILL.md` 읽기
 - 현재 날짜 및 시간 파악 필요 시 (지식 컷오프 회피): `.agents/skills/knowledge-cutoff-awareness/SKILL.md` 읽기
-- AI 프롬프트 작성, 개선 및 프롬프트 엔지니어링 필요 시: `.agents/skills/prompt-engineering/SKILL.md` 읽기
+- **AI 프롬프트 작성, 개선 및 프롬프트 엔지니어링 필요 시:** `.agents/skills/prompt-engineering/SKILL.md` 및 `.agents/skills/prompt-engineering-patterns/SKILL.md` 읽기 (워크플로우: `.agents/workflows/prompt.md`)
 - **초기 프로젝트 기획 및 기술 스택 선정 시:** `.agents/skills/technology-stack-blueprint-generator/SKILL.md` 읽기
 - **아키텍처 의사결정 문서화가 필요할 때:** `.agents/skills/architecture-decision-records/SKILL.md` 활용
 - **데이터베이스 마이그레이션 및 롤백 전략 설계 시:** `.agents/skills/database-migration/SKILL.md` 활용

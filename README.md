@@ -19,7 +19,7 @@ By using this template when starting a new project, you can instantly set up a p
    - Use the `technology-stack-blueprint-generator` skill to evaluate and recommend the best tech stack.
    - Suggest 3 options for the frontend, backend, and database based on modern best practices.
    - Wait for my approval before finalizing the choices.
-   - Once finalized [Step 1]: Completely rewrite `README.md` as a standard project README (discarding the template instructions). However, you MUST append an "AI Agent Workflows" section at the bottom of the new README, summarizing the custom triggers (e.g., `/backend`, `/database`, `/review`) and the role of `AGENTS.md` so human developers know how to interact with the AI. Also, fully populate `.agents/rules/project-context.md` by replacing all placeholders with the finalized stack.
+   - Once finalized [Step 1]: Completely rewrite `README.md` as a standard project README (discarding the template instructions). However, you MUST append an "AI Agent Workflows" section at the bottom of the new README, summarizing the custom triggers (e.g., `/backend`, `/database`, `/prompt`, `/review`) and the role of `AGENTS.md` so human developers know how to interact with the AI. Also, fully populate `.agents/rules/project-context.md` by replacing all placeholders with the finalized stack.
    - After documentation [Step 2]: Use `npx skills find` to discover relevant agent skills for the chosen stack, and propose a list of skills to install. Wait for my approval.
    - Once I approve the skills [Step 3]: Install them and update `AGENTS.md` to route them appropriately. (Skip if no relevant skills are found).
    ```
@@ -74,7 +74,7 @@ To get the most out of this template, we recommend the following iterative cycle
    - `technology-stack-blueprint-generator` 스킬을 사용하여 최적의 기술 스택을 평가하고 추천해 주세요.
    - 최신 모범 사례를 바탕으로 프론트엔드, 백엔드, 데이터베이스에 대해 각각 3가지 옵션을 제안해 주세요.
    - 최종 결정하기 전에 저의 승인을 기다려 주세요.
-   - 확정된 후 [1단계]: 기존 템플릿 안내문은 모두 지우고 새 프로젝트에 맞는 표준 `README.md`로 완전히 덮어써 주십시오. 단, 문서 하단에 "AI Agent Workflows" 섹션을 만들어 이 프로젝트에서 사용 가능한 커스텀 트리거(예: `/backend`, `/database`, `/review` 등)와 `AGENTS.md`의 역할을 휴먼 개발자를 위해 요약해 남겨두십시오. 그리고 `.agents/rules/project-context.md`의 플레이스홀더를 확정된 스택 내용으로 모두 채워주세요.
+   - 확정된 후 [1단계]: 기존 템플릿 안내문은 모두 지우고 새 프로젝트에 맞는 표준 `README.md`로 완전히 덮어써 주십시오. 단, 문서 하단에 "AI Agent Workflows" 섹션을 만들어 이 프로젝트에서 사용 가능한 커스텀 트리거(예: `/backend`, `/database`, `/prompt`, `/review` 등)와 `AGENTS.md`의 역할을 휴먼 개발자를 위해 요약해 남겨두십시오. 그리고 `.agents/rules/project-context.md`의 플레이스홀더를 확정된 스택 내용으로 모두 채워주세요.
    - 문서화 완료 후 [2단계]: `npx skills find`를 사용하여 선택된 스택에 적합한 스킬을 탐색한 뒤, 저에게 설치할 스킬 목록을 제안해 주세요. 승인을 기다려 주세요.
    - 스킬 설치를 승인하면 [3단계]: 스킬을 설치하고 `AGENTS.md`에 라우팅 규칙을 추가해 주세요. (적합한 스킬이 없다면 이 단계는 생략합니다.)
    ```

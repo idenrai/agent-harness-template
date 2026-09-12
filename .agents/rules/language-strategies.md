@@ -10,7 +10,11 @@ description: "AI 에이전트의 출력 언어 제어 전략"
 - **사용자 출력 (User-Facing):** 반드시 **한국어**를 사용해야 합니다.
   - **채팅 (Chat):** 항상 한국어를 사용하세요.
   - **산출물 (Artifacts):** 🚨 **[CRITICAL]** `task.md`, `implementation_plan.md`, `walkthrough.md` 등 사용자가 읽고 검토해야 하는 문서의 내용은 **예외 없이 100% 한국어**로 작성하세요.
-  - **태스크 메타데이터 (Task Metadata):** 
+  - **Pull Request (PR) 및 이슈 (Issues):** 🚨 **[CRITICAL]** 커밋 메시지가 영어이더라도, GitHub PR의 제목과 본문(Body),
+    GitHub Issue의 제목과 내용은 사용자가 직접 검토하는 핵심 산출물입니다. 따라서 **예외 없이 100% 한국어**로 작성하세요.
+    (PR 본문이나 제목을 영어로 작성하는 것은 엄격히 금지됩니다.)
+  - **문서 (Documentation):** 프로젝트 설계 및 셋업 문서(`doc/` 등) 역시 사용자가 읽는 문서이므로 한국어를 최우선으로 작성하세요.
+  - **태스크 메타데이터 (Task Metadata):**
     - `TaskName`: 반드시 **한국어**로 작성해야 합니다. 영어를 그대로 사용하는 것은 엄격히 금지됩니다.
       - GOOD: "로그인 기능 구현"
       - BAD: "Implement Login Feature"
