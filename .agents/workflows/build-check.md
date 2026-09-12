@@ -14,38 +14,46 @@ Execute the project's build pipeline and post a concise status comment.
 
 ### 1. Check Project Context
 
-- Read `.agents/rules/project-context.md` to discover the exact commands for:
+- Read `.agents/rules/project-context.md` and `.agents/rules/testing-pyramid-rules.md` to discover the exact commands for:
   1. Installing dependencies
-  2. Running the build process
-  3. Running the linter (if applicable)
+  2. Running the linter & typechecker
+  3. Running the unit tests
+  4. Running the build process
 
-### 2. Execute Pipeline
+### 2. Execute Pipeline (Fail Fast Principle)
 
-Run the commands discovered in step 1 sequentially in the shell.
+Run the commands discovered in step 1 sequentially in the shell. **Stop immediately if any step fails; do not execute subsequent steps.**
+
+1. **Lint & Type Check:** Run linter/formatter/typecheck. If it fails, report immediately.
+2. **Unit Tests:** Run scoped unit tests. If it fails, report immediately without attempting to build.
+3. **Build:** Run the production build process.
 
 ### 3. Report Results
 
 Post a comment using this format:
 
-**If build passes:**
+**If all checks pass:**
 
 ```markdown
-## ✅ Build Check Passed
+## ✅ Build & Test Check Passed
 
 | Step | Result |
 |------|--------|
-| Lint | ✅ Passed |
-| Build | ✅ Built successfully |
+| Lint & Format | ✅ Passed |
+| Type Check | ✅ Passed |
+| Unit Tests | ✅ Passed |
+| Production Build | ✅ Built successfully |
 ```
 
-**If build fails:**
+**If any check fails:**
 
 ```markdown
-## ❌ Build Check Failed
+## ❌ Verification Failed (Bailed Out)
 
 | Step | Result |
 |------|--------|
-| Lint / Build | ❌ Failed |
+| Failing Step Name | ❌ Failed |
+| Subsequent Steps | ⏭️ Skipped (Fail Fast) |
 
 ### Errors
 

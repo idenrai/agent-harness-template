@@ -9,6 +9,7 @@
 - 프로젝트 전체 아키텍처 및 스택: `.agents/rules/project-context.md` 읽기 (주의: 만약 해당 문서가 아직 초기 템플릿 상태(Placeholder)라면, 어떠한 코드도 작성하지 말고 사용자에게 `/plan` 워크플로우를 먼저 실행하여 기술 스택을 확정할 것을 강제하세요.)
 - 프로젝트 보안 및 데이터 취급 원칙: `.agents/rules/security.md` 읽기
 - GitHub 커밋 규칙: `.agents/rules/git-commit-rules.md` 읽기
+- **테스트 및 검증 규약 (Fail Fast, Fail Cheap):** `.agents/rules/testing-pyramid-rules.md` 읽기
 - **오픈소스 스킬 탐색 (필수):** 새로운 지시를 받으면, 코딩이나 계획 수립에 앞서 `npx skills find [키워드]` 명령어로 필요한 도구나 가이드라인(Skill)이 있는지 검색하세요. 적합한 스킬이 발견되면 `npx skills add <package> -y`를 통해 프로젝트에 설치 및 적용한 후 작업을 진행하세요.
 
 ## 🔄 Workflows (상황별 참조 트리거)

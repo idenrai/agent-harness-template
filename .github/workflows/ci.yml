@@ -1,3 +1,9 @@
+# Fail Fast & Fail Cheap CI Pipeline Template
+#
+# 이 워크플로우는 비용(러너 시간, LLM API 비용)과 피드백 시간을 최소화하기 위해
+# 검증 단계를 4단계 계층(Tier)으로 분리하여 순차적으로 실행합니다.
+# 앞선 단계가 실패하면 이후의 무거운 빌드/테스트는 즉시 취소됩니다.
+
 name: CI
 
 on:
@@ -5,32 +11,155 @@ on:
     branches: [main]
   pull_request:
     branches: [main]
+  workflow_dispatch: # Actions 탭에서 수동 실행 지원
 
 permissions:
   contents: read
+  pull-requests: read # 필요 시 라벨 자동 제거를 위해 pull-requests: write로 확장 가능
 
 jobs:
-  build:
-    name: Build & Test
+  # =========================================================================
+  # Tier 0: 변경 감지 (Path Filtering - Zero-Cost Bailout)
+  # 문서(.md)나 설정만 변경된 경우 불필요한 빌드 러너 구동을 건너뜁니다.
+  # =========================================================================
+  changes:
+    name: Detect File Changes
     runs-on: ubuntu-latest
-
+    outputs:
+      code: ${{ steps.filter.outputs.code }}
+      eval: ${{ steps.filter.outputs.eval }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
-      # --- 템플릿 사용 안내 ---
-      # 이 파일은 GitHub Actions의 기본 구조입니다.
-      # 프로젝트의 언어/프레임워크에 맞춰 아래 설정들을 채워주세요.
-      # 예: Setup Node.js / Python / Go 등
+      - name: Paths Filter
+        uses: dorny/paths-filter@v3
+        id: filter
+        with:
+          filters: |
+            code:
+              - 'src/**'
+              - 'app/**'
+              - 'package.json'
+              - 'requirements.txt'
+              - 'go.mod'
+              - 'Cargo.toml'
+              - 'tsconfig.json'
+              - 'Dockerfile*'
+              - 'docker-compose*.yml'
+              - 'Makefile'
+              - '.github/workflows/**'
+            eval:
+              - 'prompts/**'
+              - 'evals/**'
+
+  # =========================================================================
+  # Tier 1: 초고속 정적 검증 (Quick Check: Lint & Typecheck)
+  # 10~30초 내에 문법, 스타일, 타입 에러를 즉시 감지하여 빠른 피드백 제공
+  # =========================================================================
+  quick-check:
+    name: Quick Check (Lint & Type)
+    needs: changes
+    if: needs.changes.outputs.code == 'true' || github.event_name == 'push'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # --- [설정 안내: 프로젝트 스택에 맞게 Setup 액션을 구성하세요] ---
+      - name: Setup Environment
+        run: |
+          echo "환경 설정을 추가하세요 (예: actions/setup-node, actions/setup-python 등, 캐시 옵션 활성화 권장)"
+
+      - name: Install Dependencies
+        run: |
+          echo "의존성 설치 (예: npm ci, pip install -r requirements.txt)"
+
+      - name: Run Linter & Formatter
+        run: |
+          echo "린트/포맷 검사 실행 (예: npm run lint, flake8, ruff check)"
+
+      - name: Run Type Check
+        run: |
+          echo "타입 검사 실행 (예: npx tsc --noEmit, mypy)"
+
+  # =========================================================================
+  # Tier 2: 단위 테스트 & Mock 프롬프트 검증 (Unit Tests: Fast & Isolated)
+  # 외부 I/O 없는 순수 단위 테스트를 1분 이내에 완주
+  # =========================================================================
+  unit-tests:
+    name: Unit Tests (Fast & Cheap)
+    needs: quick-check
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
 
       - name: Setup Environment
-        run: echo "환경 설정을 추가하세요 (예: actions/setup-node 등)"
+        run: |
+          echo "환경 설정 및 의존성 캐시 복원"
 
-      - name: Install dependencies
-        run: echo "의존성 설치 명령어를 입력하세요 (예: npm ci, pip install -r requirements.txt)"
+      - name: Install Dependencies
+        run: |
+          echo "의존성 설치"
 
-      - name: Run Tests
-        run: echo "테스트 실행 명령어를 입력하세요 (예: npm test, pytest)"
+      - name: Run Unit Tests
+        run: |
+          echo "단위 테스트 실행 (예: npm test -- --runInBand, pytest -m 'not integration')"
 
-      - name: Run Linter
-        run: echo "린트 검사 명령어를 입력하세요 (예: npm run lint, flake8)"
+      - name: Verify Prompt Schemas (Mock LLM)
+        run: |
+          echo "프롬프트 템플릿 변수 및 Zod/Pydantic 스키마 단위 검증 (외부 API 호출 없음)"
+
+  # =========================================================================
+  # Tier 3: 빌드 및 통합 검증 (Build & Integration)
+  # 단위 테스트가 통과된 안정된 코드만 프로덕션 번들 빌드 수행
+  # =========================================================================
+  build-check:
+    name: Build & Integration Check
+    needs: unit-tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Environment
+        run: |
+          echo "환경 설정"
+
+      - name: Install Dependencies
+        run: |
+          echo "의존성 설치"
+
+      - name: Build Application
+        run: |
+          echo "프로덕션 빌드 실행 (예: npm run build, go build, cargo build)"
+
+  # =========================================================================
+  # Tier 4: 고비용 테스트 격리 (Heavy E2E & Live LLM Eval - Conditional)
+  # 브라우저 E2E나 유료 LLM API 평가는 'run-eval' 라벨 또는 main 브랜치에서만 실행
+  # =========================================================================
+  heavy-eval-e2e:
+    name: Heavy E2E & Live LLM Eval
+    needs: build-check
+    if: |
+      (github.event_name == 'pull_request' && contains(github.event.pull_request.labels.*.name, 'run-eval')) ||
+      (github.event_name == 'push' && github.ref == 'refs/heads/main')
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Run E2E & LLM Evaluation
+        run: |
+          echo "E2E 테스트 및 실 LLM API 평가 실행 (PR 라벨 'run-eval' 확인됨)"
+
+      # --- [선택 안내: 반복 실행 방지를 위해 평가 완료 후 PR 라벨 자동 제거] ---
+      # permissions에 pull-requests: write가 설정되어 있다면 아래 스텝을 활성화하여
+      # 이후 추가 커밋 푸시 시 불필요한 고비용 재실행을 방지할 수 있습니다.
+      # - name: Remove run-eval label
+      #   if: always() && github.event_name == 'pull_request'
+      #   run: gh pr edit ${{ github.event.pull_request.number }} --remove-label run-eval
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+

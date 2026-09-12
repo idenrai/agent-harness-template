@@ -40,11 +40,20 @@ Section body in English.
 - Tables: header row in English; add a brief Korean caption line above the table if the purpose is not obvious.
 - Code blocks and file/symbol names: always English only.
 
-### 2. Verify Build
-- `git status` 또는 `git diff --name-only HEAD` 등을 사용하여 변경/추가된 파일 목록을 먼저 확인합니다.
-- 변경된 파일 중 소스 코드(예: `src/` 디렉토리 내 파일, `package.json` 등 빌드에 영향을 미치는 파일)가 포함된 경우에만 `run_command` 도구를 사용하여 빌드 스크립트(예: `npm run build`)를 실행합니다.
-- 마크다운 문서(`.md`), 에이전트 설정(`.agents/`) 등 빌드와 무관한 파일만 변경된 경우, 불필요한 빌드 검증을 생략하고 다음 단계로 넘어갑니다.
-- **에러가 발생할 경우:** 즉시 `.agents/workflows/build-guard.md`를 참고하여 에러의 원인을 파악하고 코드를 수정한 뒤 다시 확인하여 0 에러 상태를 만듭니다.
+### 2. Tiered Verification (Fail Fast & Cheap)
+`.agents/rules/testing-pyramid-rules.md`를 엄격히 준수하여 아래의 순서로 단계별 검증을 수행합니다:
+
+1. **변경 범위 점검:** `git status` 또는 `git diff --name-only HEAD`를 실행합니다.
+   - 마크다운 문서(`.md`), 에이전트 설정(`.agents/`) 등 빌드/테스트와 무관한 파일만 변경된 경우 불필요한 검증을 생략하고 PR 생성 단계로 직행합니다.
+2. **Step A - Quick Lint & Typecheck (가장 빠르고 저렴한 검사):**
+   - 린트 및 타입 검사 명령어(예: `npm run lint`, `tsc --noEmit`)를 실행합니다.
+   - **실패 시:** 뒷 단계(테스트, 빌드)를 절대 실행하지 말고 즉시 중단(Bailout)한 후 오류를 수정합니다.
+3. **Step B - Scoped Unit Tests (빠른 단위 테스트 검증):**
+   - Step A를 통과한 경우, 프로젝트의 단위 테스트(예: `npm test`)를 실행합니다.
+   - **실패 시:** 빌드(Step C)를 절대 실행하지 말고 즉시 중단한 후 테스트 실패 원인을 수정합니다.
+4. **Step C - Production Build (프로덕션 빌드 검증):**
+   - Step A, B를 모두 통과한 경우에만 최종 빌드 스크립트(예: `npm run build`)를 실행합니다.
+   - **에러 발생 시:** `.agents/workflows/build-guard.md`를 참고하여 에러의 원인을 수습하고 0 에러 상태를 만듭니다.
 
 ---
 
