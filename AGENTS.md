@@ -17,6 +17,7 @@
 - **프론트엔드 UI/UX 컴포넌트 신규 생성, 수정 및 리팩토링 시 (/frontend):** `.agents/workflows/frontend.md` 읽기
 - **백엔드 아키텍처 설계, API 개발 및 리팩토링 시 (/backend):** `.agents/workflows/backend.md` 읽기
 - **데이터베이스 스키마 설계 및 마이그레이션 시 (/database):** `.agents/workflows/database.md` 읽기
+- **AI 프롬프트 작성, 템플릿 설계 및 최적화 시 (/prompt, /prompt-engineering):** `.agents/workflows/prompt.md` 읽기
 - **빌드 검토 및 오류 해결 시:** `.agents/workflows/build-guard.md` 및 `.agents/workflows/build-check.md` 읽기
 - **단위 테스트 작성 및 검증 시:** `.agents/workflows/test-writer.md` 읽기
 - **코드 리뷰 요청 시:** `.agents/workflows/review.md` 읽기
@@ -36,7 +37,7 @@
 AI가 특정 도구나 기능이 필요할 때 로드하세요.
 - 프로젝트 인덱싱 및 컨텍스트 파악 필요 시: `.agents/skills/indexing-awareness/SKILL.md` 읽기
 - 현재 날짜 및 시간 파악 필요 시 (지식 컷오프 회피): `.agents/skills/knowledge-cutoff-awareness/SKILL.md` 읽기
-- AI 프롬프트 작성, 개선 및 프롬프트 엔지니어링 필요 시: `.agents/skills/prompt-engineering/SKILL.md` 읽기
+- **AI 프롬프트 작성, 개선 및 프롬프트 엔지니어링 필요 시:** `.agents/skills/prompt-engineering/SKILL.md` 및 `.agents/skills/prompt-engineering-patterns/SKILL.md` 읽기 (워크플로우: `.agents/workflows/prompt.md`)
 - **초기 프로젝트 기획 및 기술 스택 선정 시:** `.agents/skills/technology-stack-blueprint-generator/SKILL.md` 읽기
 - **아키텍처 의사결정 문서화가 필요할 때:** `.agents/skills/architecture-decision-records/SKILL.md` 활용
 - **데이터베이스 마이그레이션 및 롤백 전략 설계 시:** `.agents/skills/database-migration/SKILL.md` 활용
