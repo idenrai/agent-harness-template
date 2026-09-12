@@ -1,10 +1,10 @@
 ---
-description: 프론트엔드 UI/UX 컴포넌트 신규 생성, 수정 및 리팩토링
+description: 프론트엔드 UI/UX 컴포넌트 신규 생성, 수정 및 디자인 시스템 고도화
 ---
 
 # Frontend Engineering Workflow
 
-**Activation:** `/frontend` (또는 프론트엔드 UI/UX 컴포넌트, 페이지, 상태 관리 로직 등의 신규 생성 및 수정을 진행할 때)
+**Activation:** `/frontend` (또는 프론트엔드 UI/UX 컴포넌트, 페이지, 상태 관리 로직 등의 신규 생성, 수정, 디자인 개선을 진행할 때)
 
 이 워크플로우는 프론트엔드와 관련된 생성, 수정, 리팩토링, 디자인 개선의 모든 라이프사이클에 적용되는 마스터 가이드라인입니다.
 
@@ -15,13 +15,16 @@ description: 프론트엔드 UI/UX 컴포넌트 신규 생성, 수정 및 리팩
 ## 2. Visual Design & UI/UX (공통 지침)
 - **컴포넌트 수정 및 생성 시:** 기존 프로젝트의 톤앤매너(색상, 여백, 타이포그래피 등) 일관성을 엄격히 유지합니다.
 - **반응형 검증:** 항상 모바일 우선(Mobile-first) 레이아웃을 고려하며, 선택된 CSS 프레임워크의 반응형 유틸리티를 활용하여 여백과 크기를 세밀하게 조정합니다.
-- UI/UX 변경 시 항상 `.agents/skills/ui-ux-pro-max/SKILL.md`와 `.agents/skills/frontend-design/SKILL.md`를 우선 참조하여 퀄리티 컨트롤을 적용합니다.
+- UI/UX 변경 시 항상 `.agents/skills/ui-ux-pro-max/SKILL.md`, `.agents/skills/frontend-design/SKILL.md`, `.agents/skills/design-taste-frontend/SKILL.md`를 우선 참조하여 퀄리티 컨트롤을 적용합니다.
 - UI 텍스트 작성 시 '디자인 속 글쓰기' 가이드(능동태, 명확한 동사, 일관성 있는 사이니지)를 준수합니다.
 
-## 3. 구조화 및 리팩토링
+## 3. 컴포넌트 구조화 및 관심사 분리(SoC) 원칙
 - 모든 컴포넌트와 모듈은 해당 기술 스택의 모범 사례(Best Practices)에 맞춰 작성합니다.
 - 복잡한 로직은 뷰(View) 렌더링과 분리하여 테스트 가능한 유틸리티나 컴포저블/훅으로 분리합니다.
 - 내부 모듈 임포트 시, 프로젝트에 설정된 절대 경로(Absolute Path, 예: `@/` 또는 `~/`) 별칭(Alias)이 있다면 적극 활용합니다.
+> [!TIP]
+> **순수 리팩토링 위임 (Handoff to `/refactor`):**
+> 컴포넌트의 외부 동작을 100% 보존하면서 폴더 구조 개편, 대규모 코드 스멜 제거, 순수 소스코드 품질 개선을 수행할 때는 본 워크플로우 대신 반드시 `.agents/workflows/refactor.md` 워크플로우를 실행하십시오.
 - **AI 프롬프트 생성기 및 템플릿 UI 작업 시:** 프롬프트 조립 컴포넌트, 복사 액션, AI 상호작용 뷰 등 프롬프트와 관련된 프론트엔드 기능을 구현/수정할 때는 반드시 `.agents/workflows/prompt.md` 워크플로우를 참조하여 템플릿 품질과 일관성을 보장합니다.
 
 ## 4. 다국어 지원 (i18n) 동기화

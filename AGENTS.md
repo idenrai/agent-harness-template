@@ -15,10 +15,11 @@
 ## 🔄 Workflows (상황별 참조 트리거)
 특정 작업이나 상황이 발생했을 때, 해당하는 워크플로우나 에이전트 지침을 로드하세요.
 
-- **프론트엔드 UI/UX 컴포넌트 신규 생성, 수정 및 리팩토링 시 (/frontend):** `.agents/workflows/frontend.md` 읽기
-- **백엔드 아키텍처 설계, API 개발 및 리팩토링 시 (/backend):** `.agents/workflows/backend.md` 읽기
+- **프론트엔드 UI/UX 컴포넌트 신규 생성, 수정 및 디자인 시스템 고도화 시 (/frontend):** `.agents/workflows/frontend.md` 읽기
+- **백엔드 아키텍처 설계, API 개발 및 비즈니스 로직 구현 시 (/backend):** `.agents/workflows/backend.md` 읽기
 - **데이터베이스 스키마 설계 및 마이그레이션 시 (/database):** `.agents/workflows/database.md` 읽기
 - **AI 프롬프트 작성, 템플릿 설계 및 최적화 시 (/prompt, /prompt-engineering):** `.agents/workflows/prompt.md` 읽기
+- **프로젝트 폴더 구조 및 소스코드 전면 리팩토링 시 (/refactor):** `.agents/workflows/refactor.md` 읽기 (동작 보존 및 코드 스멜 제거)
 - **빌드 검토 및 오류 해결 시:** `.agents/workflows/build-guard.md` 및 `.agents/workflows/build-check.md` 읽기
 - **단위 테스트 작성 및 검증 시:** `.agents/workflows/test-writer.md` 읽기
 - **코드 리뷰 요청 시:** `.agents/workflows/review.md` 읽기
@@ -43,5 +44,8 @@ AI가 특정 도구나 기능이 필요할 때 로드하세요.
 - **아키텍처 의사결정 문서화가 필요할 때:** `.agents/skills/architecture-decision-records/SKILL.md` 활용
 - **데이터베이스 마이그레이션 및 롤백 전략 설계 시:** `.agents/skills/database-migration/SKILL.md` 활용
 - **코드 및 인프라 보안 취약점 집중 리뷰 시:** `.agents/skills/security-review/SKILL.md` 활용
-- **UI/UX 설계 및 프론트엔드 디자인 기획 시:** `.agents/skills/ui-ux-pro-max/SKILL.md` 및 `.agents/skills/frontend-design/SKILL.md` 읽기
+- **UI/UX 설계 및 프론트엔드 디자인 기획 시:** `.agents/skills/ui-ux-pro-max/SKILL.md`, `.agents/skills/frontend-design/SKILL.md`, `.agents/skills/design-taste-frontend/SKILL.md` 읽기
 - **디자인 가이드라인 준수 여부 및 시각적 버그 감사 시:** `.agents/skills/web-design-guidelines/SKILL.md`, `.agents/skills/agent-browser/SKILL.md`, `.agents/skills/before-and-after/SKILL.md` 적극 활용
+- **프로젝트 및 폴더/모듈 구조 리팩토링 및 클린 아키텍처 설계 시:** `.agents/skills/project-structure-refactoring/SKILL.md` 읽기
+- **코드 스멜 진단 및 마틴 파울러 리팩토링 패턴 적용 시:** `.agents/skills/refactoring-patterns/SKILL.md` 읽기
+- **행위 보존 및 안전한 무중단 점진적 리팩토링 검증 시:** `.agents/skills/safe-refactor/SKILL.md` 읽기
