@@ -44,7 +44,7 @@ AI가 특정 도구나 기능이 필요할 때 로드하세요.
 - **아키텍처 의사결정 문서화가 필요할 때:** `.agents/skills/architecture-decision-records/SKILL.md` 활용
 - **데이터베이스 마이그레이션 및 롤백 전략 설계 시:** `.agents/skills/database-migration/SKILL.md` 활용
 - **코드 및 인프라 보안 취약점 집중 리뷰 시:** `.agents/skills/security-review/SKILL.md` 활용
-- **UI/UX 설계 및 프론트엔드 디자인 기획 시:** `.agents/skills/ui-ux-pro-max/SKILL.md` 및 `.agents/skills/frontend-design/SKILL.md` 읽기
+- **UI/UX 설계 및 프론트엔드 디자인 기획 시:** `.agents/skills/ui-ux-pro-max/SKILL.md`, `.agents/skills/frontend-design/SKILL.md`, `.agents/skills/design-taste-frontend/SKILL.md` 읽기
 - **디자인 가이드라인 준수 여부 및 시각적 버그 감사 시:** `.agents/skills/web-design-guidelines/SKILL.md`, `.agents/skills/agent-browser/SKILL.md`, `.agents/skills/before-and-after/SKILL.md` 적극 활용
 - **프로젝트 및 폴더/모듈 구조 리팩토링 및 클린 아키텍처 설계 시:** `.agents/skills/project-structure-refactoring/SKILL.md` 읽기
 - **코드 스멜 진단 및 마틴 파울러 리팩토링 패턴 적용 시:** `.agents/skills/refactoring-patterns/SKILL.md` 읽기
