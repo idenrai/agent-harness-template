@@ -43,11 +43,13 @@ To get the most out of this template, we recommend the following iterative cycle
 7. **Prune:** Clean up your local stale branches by running `/prune`.
 
 
-## 📂 Structure Overview
+## 📂 Structure Overview (Antigravity 2.0 5 Pillars)
 
-- `.agents/rules/`: Core Rules that the agent must always follow, such as coding conventions, architecture guidelines, and security policies.
-- `.agents/workflows/`: Step-by-step guides for the agent to execute specific situations (e.g., `/plan`, `/frontend`, `/review`).
-- `.agents/skills/`: Tools and extensions available to the agent (e.g., prompt engineering, browser control, UI design).
+- `.agents/rules/`: Core Rules that the agent must always follow (coding conventions, architecture guidelines, security, testing pyramid).
+- `.agents/agents/`: Declarative Subagents (`code-reviewer`, `quality-guard`) for isolated, unbiased audits and testing.
+- `.agents/skills/`: Specialized skills and runbooks following Progressive Disclosure (`/deep-dive`, `/quality-gate`, `/code-review`, `/commit`, `/pr`, `/refactor`, etc.).
+- `.agents/hooks.json`: Lifecycle Hooks enforcing PreToolUse safety guards via stateless Node.js runner (`block-dangerous-commands.cjs`).
+- `AGENTS.md`: Single Source of Truth (SSoT) master routing map orchestrating rules, subagents, skills, and MCP tools.
 - `.github/`: CI/CD workflows and Issue/PR templates.
 - `doc/`: Default directory structure for project documentation.
 
